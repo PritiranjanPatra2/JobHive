@@ -65,7 +65,7 @@ export const getUserJobApplications=async (req,res)=>{
 try {
     const userId=req.auth.userId;
     const applications=await JobApplication.find({userId})
-    .populate('companyId','name email image').populate('jobId','title description category level salary').exec();
+    .populate('companyId','name email image').populate('jobId','title description location category level salary').exec();
     if(!applications){
         return res.json({
             success:false,
