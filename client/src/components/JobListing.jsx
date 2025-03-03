@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { assets, JobCategories, JobLocations } from "../assets/assets";
 import JobCard from "./JobCard";
+import SkeletonLoader from "./SkeletonLoader";
 
 function JobListing() {
   const { isSearched, searchFilter, setSearchFilter, jobs } =
@@ -143,12 +144,8 @@ function JobListing() {
               ))}
           </div>
         ) : (
-          <div className="flex justify-center items-center h-40">
-            <div className="w-8 h-8 border-4 border-blue-500 border-dashed rounded-full animate-spin"></div>
-            <p className="ml-2 text-lg font-semibold text-gray-600">
-              Loading...
-            </p>
-          </div>
+        
+          <SkeletonLoader />
         )}
 
         {filteredJobs.length > 0 && (
